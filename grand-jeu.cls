@@ -15,15 +15,10 @@
 \RequirePackage{graphicx}
 \RequirePackage{fontspec}
 \RequirePackage[french]{babel}
-\RequirePackage{arydshln}
-\setmainfont[Ligatures=TeX]{Lato}
-\setsansfont[Ligatures=TeX]{Montserrat}
+\setmainfont{Lato}
+\setsansfont{Montserrat}
 
 % commandes personnelles
-
-\newcommand{\langue}{\emph} % mots en langues étrangères
-\newcommand{\citital}{\emph} % citation en italique
-\newcommand{\nomprog}{\texttt} % nom de programme en police teletype
 \newcommand{\titre}[1]{ \title{#1} }
 \newcommand{\categorie}[1]{ \def \@categorie{#1} }
 

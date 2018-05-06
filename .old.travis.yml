@@ -1,0 +1,19 @@
+---
+dist: bionic
+sudo: required
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install texlive-latex-recommended texlive-luatex texlive-lang-french texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
+script:
+  - sudo cp fonts/Lato/*.ttf /usr/share/fonts/truetype/
+  - sudo cp fonts/Montserrat/*.ttf /usr/share/fonts/truetype/
+  - sudo fc-cache -f -v
+  - ./generation.sh
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local_dir: publish/
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
