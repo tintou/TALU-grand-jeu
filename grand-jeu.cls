@@ -63,22 +63,24 @@
 
 \newenvironment{moments-stop}
 {
-    \textbf{\sffamily Moments STOP dans le jeu :}
+    \textbf{\sffamily Moments Unisson dans le jeu :}
 
 Pour indiquer à tout le monde l’avancement du temps de jeu (signal : À DÉFINIR)
 
 \begin{itemize}
-    \item{À ¼ de progression : STATUE, tous immobiles pendant 30 secondes.}
-    \item{À ½ de progression : CHANT, tous chantent le chant du rassemblement (refrain et pré-refrain)}
-    \item{À ¾ de progression : DANSE, tous dansent la macarena pendant 30 secondes.}
-    \item{Goûter}
+\item{Pour indiquer à tout le monde l’avancement du temps de jeu.}
+\item{A ¼ de la progression : DANSE : tout le monde chante le chant du rassemblement (Pré-refrain \& refrain).}
+\item{A ½ de la progression : CHANT  : tout le monde danse la macarena pendant environ 30 secondes.}
+\item{Goûter (une fois le moment STOP passé).}
+\item{A ¾ de la progression : STATUE : tout le monde immobile pendant environ 30 secondes.}
+
 \end{itemize}
 }
 {
     \vspace{0.5cm}
 }
 
-\AtEndDocument {
+\AtBeginDocument {
 \textbf{\sffamily Vous êtes responsable de votre jeu, de la sécurité et de l’amusement.}
 
 \textbf{\sffamily Les jeunes ne peuvent pas commencer tant que toute l’équipe n’est pas présente.}

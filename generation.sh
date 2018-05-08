@@ -22,6 +22,6 @@ HTML_PAGE=$HTML_PAGE"""
 </html>"""
 
 # publish the website
-mkdir publish | true
-echo "$HTML_PAGE" > "publish/index.html"
-cp result/*.pdf publish/
+mkdir docs | true
+echo "$HTML_PAGE" > "docs/index.html"
+cp result/*.pdf docs/
