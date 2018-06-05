@@ -15,12 +15,63 @@
 \RequirePackage{graphicx}
 \RequirePackage{fontspec}
 \RequirePackage[french]{babel}
+\RequirePackage{ifthen}
+\RequirePackage{xcolor}
+\RequirePackage{lastpage}
 \setmainfont{Lato}
 \setsansfont{Montserrat}
 
+\definecolor{energie}{HTML}{FFAC00}
+\definecolor{debrouillard}{HTML}{008DFF}
+\definecolor{rayonnement}{HTML}{6E00B0}
+\definecolor{solidaire}{HTML}{B60505}
+\definecolor{esperance}{HTML}{8E8E8E}
+\definecolor{respectueux}{HTML}{047F00}
+
+\def \categoriecolor {black}
+\def \headerimage {images/header.pdf}
+
 % commandes personnelles
-\newcommand{\titre}[1]{ \title{#1} }
-\newcommand{\categorie}[1]{ \def \@categorie{#1} }
+\newcommand{\titre}[2][0]{ \def \@numero{#1} \title{#2} }
+\newcommand{\categorie}[1]{
+    \def \@categorie{#1}
+     \ifthenelse
+      {\equal{Énergie}{#1}}
+      {\def \@categorie{Solar Impulse}
+       \def \categoriecolor {energie}
+       \def \headerimage {images/header-jaune.pdf}}
+      {}
+     \ifthenelse
+      {\equal{Débrouillard}{#1}}
+      {\def \@categorie{Roseta}
+       \def \categoriecolor {debrouillard}
+       \def \headerimage {images/header-bleu.pdf}}
+      {}
+     \ifthenelse
+      {\equal{Rayonnement}{#1}}
+      {\def \@categorie{Nozomi}
+       \def \categoriecolor {rayonnement}
+       \def \headerimage {images/header-violet.pdf}}
+      {}
+     \ifthenelse
+      {\equal{Solidaire}{#1}}
+      {\def \@categorie{SETI}
+       \def \categoriecolor {solidaire}
+       \def \headerimage {images/header-rouge.pdf}}
+      {}
+     \ifthenelse
+      {\equal{Espérance}{#1}}
+      {\def \@categorie{Curiosity}
+       \def \categoriecolor {esperance}
+       \def \headerimage {images/header-blanc.pdf}}
+      {}
+     \ifthenelse
+      {\equal{Respectueux}{#1}}
+      {\def \@categorie{ISS}
+       \def \categoriecolor {respectueux}
+       \def \headerimage {images/header-vert.pdf}}
+      {}
+}
 
 \newenvironment{liste-materiel}
 {
@@ -52,6 +103,18 @@
 \newenvironment{imaginaire}
 {
     \textbf{\sffamily Imaginaire :}
+    \vspace{0.2cm}
+
+    \begin{minipage}{0.9\textwidth}
+}
+{
+    \end{minipage}
+    \vspace{0.5cm}
+}
+
+\newenvironment{installation}
+{
+    \textbf{\sffamily Installation :}
     \vspace{0.2cm}
 
     \begin{minipage}{0.9\textwidth}
@@ -104,10 +167,10 @@ Pour indiquer à tout le monde l’avancement du temps de jeu (signal : À DÉFI
 
 \chead{
     \hspace*{1cm}
-    \includegraphics[width=196mm]{images/header.pdf}
+    \includegraphics[width=196mm]{\headerimage}
 }
 \rhead {
-    \textsf{FICHE D'ANIMATION \\ \@title -- \@categorie }
+    \textsf{FICHE D'ANIMATION \\ {\color{\categoriecolor}\@title -- \@categorie}}
     \vspace*{1cm}
 }
 \lfoot {
@@ -116,7 +179,11 @@ Pour indiquer à tout le monde l’avancement du temps de jeu (signal : À DÉFI
 }
 \cfoot{
     \vspace{-1cm}
-    --\thepage--
+     \ifthenelse
+      {\pageref{LastPage} > 1}
+      {--\thepage / \pageref{LastPage}--}
+      {}
+    {\color{\categoriecolor}\no \@numero}
 }
 \rfoot
 {
