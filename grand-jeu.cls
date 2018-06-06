@@ -183,7 +183,10 @@ Pour indiquer à tout le monde l’avancement du temps de jeu (signal : À DÉFI
       {\pageref{LastPage} > 1}
       {--\thepage / \pageref{LastPage}--}
       {}
-    {\color{\categoriecolor}\no \@numero}
+     \ifthenelse
+      {\@numero > 0}
+      {\color{\categoriecolor}\no \@numero}
+      {}
 }
 \rfoot
 {
